@@ -9,7 +9,6 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableReactiveMongoRepositories
 @EnableWebFlux
 public class ReactiveApiApplication {
-//zewnetrzne api | baza | io plikowe | algorytm -> reaktywnie i imperatywnie i porownaj wydajnosc
     public static void main(String[] args) {
         SpringApplication.run(ReactiveApiApplication.class, args);
     }

@@ -17,8 +17,8 @@ services:
       - '8081:8081'
     container_name: 'mongo-db-client'
     environment: 
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin-username
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin-pass
   postgresql:
     image: postgres:latest
     container_name: postgresql-db
