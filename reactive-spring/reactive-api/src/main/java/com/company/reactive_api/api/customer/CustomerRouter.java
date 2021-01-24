@@ -23,9 +23,4 @@ class CustomerRouter {
                 .GET("/customers/list", serverRequest -> customerHandler.listCustomers())
                 .build();
     }
-
-    @Bean
-    RouterFunction<ServerResponse> helloWorld() {
-        return route(GET("/hello-world"), request -> ServerResponse.ok().bodyValue("Hello World"));
-    }
 }

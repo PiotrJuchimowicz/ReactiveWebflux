@@ -1,12 +1,16 @@
-package com.company.reactive_api.model.customer;
+package com.company.imperative_api.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Invoice {
+@Entity
+@Table(name = "INVOICE")
+public class Invoice extends AbstractEntity {
 
-    private UUID id;
+
     private String number;
     private BigDecimal amount;
     private LocalDateTime issueDate;
@@ -16,15 +20,11 @@ public class Invoice {
     }
 
     public Invoice(UUID id, String number, BigDecimal amount, LocalDateTime issueDate, String description) {
-        this.id = id;
+        super(id);
         this.number = number;
         this.amount = amount;
         this.issueDate = issueDate;
         this.description = description;
-    }
-
-    public UUID getId() {
-        return id;
     }
 
     public String getNumber() {

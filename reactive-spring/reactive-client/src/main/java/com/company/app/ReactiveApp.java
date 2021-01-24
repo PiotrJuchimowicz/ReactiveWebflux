@@ -14,25 +14,25 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class App {
+public class ReactiveApp {
 
     private static final String API_URL = "http://localhost:8080";
     private static final String ADD_CUSTOMER_API = "/customers";
     private static final String LIST_CUSTOMERS_API = "/customers/list";
-    private static final String CUSTOMERS_FILE_NAME = "customers.txt";
-    private static final String AMOUNTS_FILE_NAME = "amounts.txt";
+    private static final String CUSTOMERS_FILE_NAME = "customers_reactive.txt";
+    private static final String AMOUNTS_FILE_NAME = "amounts_reactive.txt";
 
     public static void main(String[] args) {
-        final int threads = Runtime.getRuntime().availableProcessors();
+        final int threads = 3;
         ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(threads);
         final Client webClient = new ReactiveClient();
 
         Runnable saveCustomer = () -> webClient
-                .post(CustomerDtoFactory.newRandomCustomerDto(), API_URL + ADD_CUSTOMER_API, App::saveAmountToFile);
-        scheduledThreadPool.scheduleAtFixedRate(saveCustomer, 50L, 50L, TimeUnit.MILLISECONDS);
+                .post(CustomerDtoFactory.newRandomCustomerDto(), API_URL + ADD_CUSTOMER_API, ReactiveApp::saveAmountToFile);
+        scheduledThreadPool.scheduleAtFixedRate(saveCustomer, 50L, 200L, TimeUnit.MILLISECONDS);
 
-        Runnable getCustomers = () -> webClient.get(API_URL + LIST_CUSTOMERS_API, App::saveCustomersToFile);
-        scheduledThreadPool.scheduleAtFixedRate(getCustomers, 5000L, 100L, TimeUnit.MILLISECONDS);
+        Runnable getCustomers = () -> webClient.get(API_URL + LIST_CUSTOMERS_API, ReactiveApp::saveCustomersToFile);
+        scheduledThreadPool.scheduleAtFixedRate(getCustomers, 5000L, 200L, TimeUnit.MILLISECONDS);
     }
 
     @SneakyThrows

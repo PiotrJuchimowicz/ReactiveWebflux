@@ -25,8 +25,7 @@ public class CustomerService {
                 .map(CustomerFactory::toEntity)
                 .flatMap(customerRepository::save)
                 .flatMap(paymentService::savePayment)
-                .map(Payment::getAmount)
-                .filter(bigDecimal -> bigDecimal.compareTo(BigDecimal.ZERO) > 0);
+                .map(Payment::getAmount);
     }
 
     public Flux<CustomerDto> listCustomers() {

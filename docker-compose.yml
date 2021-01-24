@@ -16,9 +16,9 @@ services:
     container_name: postgresql-db
     environment:
       - POSTGRES_USER=admin-username
-      - POSTGRES_PASSWORD=admin-username
+      - POSTGRES_PASSWORD=admin-pass
       - POSTGRES_DB=admin
     ports:
-      - '5433:5432'
+      - '5432:5432'
     volumes:
       - ./postgresql_db_data:/var/lib/postgresql/data/

@@ -1,9 +1,9 @@
-package com.company.reactive_api.service.customer;
+package com.company.imperative_api.service.customer;
 
 import com.company.dto.CustomerDto;
 import com.company.dto.InvoiceDto;
-import com.company.reactive_api.model.customer.Customer;
-import com.company.reactive_api.model.customer.Invoice;
+import com.company.imperative_api.model.Customer;
+import com.company.imperative_api.model.Invoice;
 
 import java.util.Set;
 import java.util.UUID;
