@@ -11,14 +11,6 @@ services:
       - '27017:27017'
     volumes:
       - ./mongodb_data_container:/data/db
-  mongo-express:
-    image: 'mongo-express'
-    ports: 
-      - '8081:8081'
-    container_name: 'mongo-db-client'
-    environment: 
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin-username
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin-pass
   postgresql:
     image: postgres:latest
     container_name: postgresql-db
